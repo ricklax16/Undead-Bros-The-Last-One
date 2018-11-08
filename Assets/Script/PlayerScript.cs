@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerScript : Physics
 {
 
-
+    
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public AudioSource sLose;
@@ -60,9 +60,10 @@ public class PlayerScript : Physics
         }
 
         animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        animator.SetFloat("speed", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+       
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
