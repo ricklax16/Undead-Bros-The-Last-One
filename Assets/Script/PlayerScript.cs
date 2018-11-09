@@ -33,21 +33,29 @@ public class PlayerScript : Physics
 
     }
 
-    public void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-
-        {
-
-            GameObject b = (GameObject)(Instantiate(bullet, transform.position + transform.up * 1.5f, Quaternion.identity));
-
-            b.GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
-
-        }
-    }
+    
 
     protected override void ComputeVelocity()
     {
+
+        if (Input.GetMouseButtonDown(0))
+
+        { //...setting shoot direction
+            Vector3 shootDirection;
+            shootDirection = Input.mousePosition;
+            shootDirection.z = 0.0f;
+            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+            shootDirection = shootDirection - transform.position;
+            //...instantiating the rocket
+            GameObject b = (GameObject)(Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))));
+            b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
+           
+            
+
+        }
+       
+
+
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
@@ -71,6 +79,8 @@ public class PlayerScript : Physics
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
+       
+       
         animator.SetBool("grounded", grounded);
         animator.SetFloat("speed", Mathf.Abs(velocity.x) / maxSpeed);
 
