@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerScript : Physics
 {
 
-    
+    public GameObject bullet;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public AudioSource sLose;
@@ -33,6 +33,18 @@ public class PlayerScript : Physics
 
     }
 
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+
+        {
+
+            GameObject b = (GameObject)(Instantiate(bullet, transform.position + transform.up * 1.5f, Quaternion.identity));
+
+            b.GetComponent<Rigidbody2D>().AddForce(transform.up * 1000);
+
+        }
+    }
 
     protected override void ComputeVelocity()
     {
@@ -70,23 +82,13 @@ public class PlayerScript : Physics
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            foreach (ContactPoint2D point in other.contacts)
-            {
-
-                Debug.Log(point.normal);
-                Debug.DrawLine(point.point, point.point + point.normal, Color.red, 10);
-                if (point.normal.y >= 0.9f || point.normal.y >= 1.0f)
-                {
-                    other.gameObject.SetActive(false);
-                }
-                else
-                {
+           
                     sLose.Play();
                     count = count - 1;
                     SetLifeText();
 
-                }
-            }
+                
+            
         }
     }
 
@@ -105,4 +107,6 @@ public class PlayerScript : Physics
 
 
     }
+
+
 }
