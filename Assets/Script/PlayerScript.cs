@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : Physics
 {
-
+    public Text LifeText;
     public GameObject bullet;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
@@ -49,9 +49,6 @@ public class PlayerScript : Physics
             //...instantiating the rocket
             GameObject b = (GameObject)(Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))));
             b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
-           
-            
-
         }
        
 
@@ -113,7 +110,7 @@ public class PlayerScript : Physics
 
 
         }
-       // LifeText.text = "count: " + count.ToString();
+       LifeText.text = "count: " + count.ToString();
 
 
     }
