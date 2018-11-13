@@ -43,11 +43,15 @@ public class PlayerScript : Physics
         { //...setting shoot direction
             Vector3 shootDirection;
             shootDirection = Input.mousePosition;
+            print(shootDirection.x + " " + shootDirection.y);
             shootDirection.z = 0.0f;
             shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-            shootDirection = shootDirection - transform.position;
+            print(shootDirection.x + " " + shootDirection.y);
+            shootDirection.x = shootDirection.x - transform.position.x;
+            shootDirection.y = transform.position.y-shootDirection.y;
+            print(shootDirection.x + " " + shootDirection.y);
             //...instantiating the rocket
-            GameObject b = (GameObject)(Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 0))));
+            GameObject b = (GameObject)(Instantiate(bullet, shootDirection, Quaternion.Euler(new Vector3(0, 0, 0))));
             b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
         }
        
@@ -78,7 +82,7 @@ public class PlayerScript : Physics
 
        
        
-        animator.SetBool("grounded", grounded);
+        
         animator.SetFloat("speed", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
