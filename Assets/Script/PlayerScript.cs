@@ -41,37 +41,37 @@ public class PlayerScript : Physics
         if (Input.GetMouseButtonDown(0))
 
         { //...setting shoot direction
-            if (Input.mousePosition.x < transform.position.x)
-            {
-                Vector3 shootDirection;
-                
-                shootDirection.z = 0.0f;
-                shootDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                print(shootDirection.x + " " + shootDirection.y);
-                shootDirection.x = -1*(shootDirection.y - transform.position.x);
-                shootDirection.y = shootDirection.y - transform.position.y;
-                print(shootDirection.x + " " + shootDirection.y);
-                //...instantiating the rocket
-                GameObject b = (GameObject)(Instantiate(bullet, shootDirection, Quaternion.identity));
-                b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
-            }
-           else if (Input.mousePosition.x > transform.position.x)
-            {
-                Vector3 shootDirection;
-                shootDirection = Input.mousePosition;
-                print(shootDirection.x + " " + shootDirection.y);
-                shootDirection.z = 0.0f;
-                shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-                print(shootDirection.x + " " + shootDirection.y);
-                shootDirection.x = (shootDirection.x - transform.position.x);
-                shootDirection.y = shootDirection.y - transform.position.y;
-                print(shootDirection.x + " " + shootDirection.y);
-                //...instantiating the rocket
-                GameObject b = (GameObject)(Instantiate(bullet, transform.position, Quaternion.Euler(shootDirection)));
-                b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
-            }
 
+            
+            Vector3 shootDirection;
+            shootDirection = Input.mousePosition;
+            print(shootDirection.x + " " + shootDirection.y);
+            shootDirection.z = 0.0f;
+            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+            //shootDirection = shootDirection - transform.position;
+            print(shootDirection.x + " " + shootDirection.y);
+            shootDirection.x = (shootDirection.x - transform.position.x);
+            shootDirection.y =  shootDirection.y-transform.position.y;
+            print(shootDirection.x + " " + shootDirection.y);
+            //...instantiating the rocket
+
+            Vector3 temp = new Vector3();
+            temp.y = transform.position.y;
+            temp.z = 0.0f;
+            if (transform.position.x > shootDirection.x)
+            {
+                temp.x = transform.position.x - 1.5f;
+                 }
+            else
+            {
+                temp.x = transform.position.x + 1.5f;
+            }
+            GameObject b = (GameObject)(Instantiate(bullet, temp, Quaternion.Euler(new Vector3(0, 0, 0))));
+            
+            b.GetComponent<Rigidbody2D>().AddForce(new Vector2(shootDirection.x * 1.5f, shootDirection.y * 1.5f));
         }
+
+    
         Vector2 move = Vector2.zero;
 
         move.x = Input.GetAxis("Horizontal");
