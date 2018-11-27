@@ -60,11 +60,11 @@ public class PlayerScript : Physics
             temp.z = 0.0f;
             if (transform.position.x > shootDirection.x)
             {
-                temp.x = transform.position.x - 1.5f;
+                temp.x = transform.position.x - .5f;
                  }
             else
             {
-                temp.x = transform.position.x + 1.5f;
+                temp.x = transform.position.x + .5f;
             }
             GameObject b = (GameObject)(Instantiate(bullet, temp, Quaternion.Euler(new Vector3(0, 0, 0))));
             
