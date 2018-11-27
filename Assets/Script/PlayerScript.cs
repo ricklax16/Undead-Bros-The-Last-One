@@ -10,7 +10,7 @@ public class PlayerScript : Physics
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
     public AudioSource sLose;
-    public AudioSource j;
+   // public AudioSource j;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     public int count = 3;
@@ -21,7 +21,7 @@ public class PlayerScript : Physics
     private void Start()
     {
 
-        sLose = GetComponent<AudioSource>();
+       //sLose = GetComponent<AudioSource>();
 
         SetLifeText();
     }
@@ -79,7 +79,7 @@ public class PlayerScript : Physics
         if (Input.GetButtonDown("Jump") && grounded)
         {
             velocity.y = jumpTakeOffSpeed;
-            j.Play();
+           // j.Play();
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -109,12 +109,19 @@ public class PlayerScript : Physics
         if (other.gameObject.CompareTag("Enemy"))
         {
            
-                    sLose.Play();
+                    //sLose.Play();
                     count = count - 1;
                     SetLifeText();
 
                 
             
+        }
+        if (other.gameObject.CompareTag("Saw"))
+        {
+            //sLose.Play();
+            count = count - 1;
+            SetLifeText();
+
         }
     }
 

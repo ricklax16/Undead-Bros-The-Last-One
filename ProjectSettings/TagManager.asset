@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Wall
+  - Edge
+  - Saw
   layers:
   - Default
   - TransparentFX
