@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\bullet.cs" />
     <Compile Include="Assets\Script\DeadZoneCamera.cs" />
+    <Compile Include="Assets\Script\LeftZombie.cs" />
     <Compile Include="Assets\Script\PerfectPixel.cs" />
     <Compile Include="Assets\Script\Physics.cs" />
     <Compile Include="Assets\Script\PlayerScript.cs" />

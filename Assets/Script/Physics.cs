@@ -34,7 +34,7 @@ public class Physics : MonoBehaviour {
 
     void Update()
     {
-        targetVelocity = Vector2.zero;
+        //targetVelocity = Vector2.zero;
         ComputeVelocity();
     }
 

@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Smartfoe : Physics
+public class Smartfoe : MonoBehaviour
 {
+    protected Vector2 targetVelocity;
     private Vector2 vel;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
