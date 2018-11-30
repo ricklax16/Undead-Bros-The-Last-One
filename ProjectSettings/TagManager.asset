@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Edge
   - Saw
+  - Bullet
   layers:
   - Default
   - TransparentFX

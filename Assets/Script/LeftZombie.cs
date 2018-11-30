@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LeftZombie : Physics {
-    
-    private Vector2 vel;
+    public int way=0;//0 is for right 1 is for left;
+   
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
+    
     // Use this for initialization
     private void Start()
     {
-        targetVelocity = Vector2.right;
-        //vel = Vector2.right;
+        if (way == 0)
+        {
+            targetVelocity = Vector2.right;
+        }
+       else if (way == 1)
+        {
+            targetVelocity = Vector2.left;
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -35,6 +41,16 @@ public class LeftZombie : Physics {
         if (other.gameObject.CompareTag("Saw"))
         {
             this.gameObject.SetActive(false);
+
+        }
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+
+            other.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+
+            door.points += 1;
+
 
         }
     }

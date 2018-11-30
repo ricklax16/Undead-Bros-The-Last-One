@@ -16,14 +16,7 @@ public class bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-
-            other.gameObject.SetActive(false);
-
-
-
-        }
+       
     }
 
 

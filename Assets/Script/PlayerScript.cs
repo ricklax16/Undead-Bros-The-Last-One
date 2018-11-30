@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerScript : Physics
 {
+   
+    public static int temp;
     public Text LifeText;
     public GameObject bullet;
     public float maxSpeed = 7;
@@ -140,6 +142,6 @@ public class PlayerScript : Physics
 
 
     }
-
+    
 
 }
