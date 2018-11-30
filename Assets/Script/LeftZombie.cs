@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LeftZombie : Physics {
     public int way=0;//0 is for right 1 is for left;
-   
+    public int life=2;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     
+    public int count = 0;
     // Use this for initialization
     private void Start()
     {
@@ -45,11 +46,14 @@ public class LeftZombie : Physics {
         }
         if (other.gameObject.CompareTag("Bullet"))
         {
-
+            count++;
             other.gameObject.SetActive(false);
-            this.gameObject.SetActive(false);
+            if (count == life)
+            {
+                this.gameObject.SetActive(false);
 
-            door.points += 1;
+                door.points += 1;
+            }
 
 
         }
