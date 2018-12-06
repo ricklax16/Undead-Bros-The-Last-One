@@ -47,15 +47,17 @@ public class PlayerScript : Physics
 
             
             Vector3 shootDirection;
-            shootDirection = Input.mousePosition;
-            print(shootDirection.x + " " + shootDirection.y);
+            shootDirection = Input.mousePosition;         
+           // print(shootDirection.x + " " + shootDirection.y);
             shootDirection.z = 0.0f;
-            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
-            //shootDirection = shootDirection - transform.position;
-            print(shootDirection.x + " " + shootDirection.y);
-            shootDirection.x = (shootDirection.x - transform.position.x);
+            shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);           
+            shootDirection = shootDirection - transform.position;
+            //print(shootDirection.x + " " + shootDirection.y);
+           shootDirection.x = (shootDirection.x - transform.position.x);
             shootDirection.y =  shootDirection.y-transform.position.y;
-            print(shootDirection.x + " " + shootDirection.y);
+            //print(shootDirection.x + " " + shootDirection.y);
+
+
             //...instantiating the rocket
 
             Vector3 temp = new Vector3();
