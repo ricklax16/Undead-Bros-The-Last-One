@@ -8,6 +8,7 @@ public class PlayerScript : Physics
    
     public static int temp;
     public Text LifeText;
+    public Text GameOver;
     public GameObject bullet;
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
@@ -67,6 +68,7 @@ public class PlayerScript : Physics
             else
             {
                 temp.x = transform.position.x + .5f;
+               
             }
             GameObject b = (GameObject)(Instantiate(bullet, temp, Quaternion.Euler(new Vector3(0, 0, 0))));
             
@@ -105,7 +107,7 @@ public class PlayerScript : Physics
         targetVelocity = move * maxSpeed;
        
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.gameObject.CompareTag("Enemy"))
@@ -133,7 +135,7 @@ public class PlayerScript : Physics
         {
             sLose.Play();
 
-          //  loseText.text = "You Lose";
+          GameOver.text = "You Lose";
             player.SetActive(false);
 
 
